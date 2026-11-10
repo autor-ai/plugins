@@ -1,0 +1,9 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "autor": {
+      "type": "streamable-http",
+      "url": "https://autor.ai/mcp"
+    }
+  }
+}

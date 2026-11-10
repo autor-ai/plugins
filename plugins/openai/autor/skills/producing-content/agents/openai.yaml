@@ -1,0 +1,16 @@
+interface:
+  display_name: "Produce content"
+  short_description: "Fill templates and render finished files"
+  brand_color: "#171717"
+  default_prompt: "Render this week's posts from our published templates."
+
+policy:
+  allow_implicit_invocation: true
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "autor"
+      description: "autor MCP server"
+      transport: "streamable_http"
+      url: "https://autor.ai/mcp"

@@ -1,0 +1,16 @@
+interface:
+  display_name: "Set up a brand"
+  short_description: "Import and fix a brand kit from a website"
+  brand_color: "#171717"
+  default_prompt: "Set up our brand in autor from our website."
+
+policy:
+  allow_implicit_invocation: true
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "autor"
+      description: "autor MCP server"
+      transport: "streamable_http"
+      url: "https://autor.ai/mcp"

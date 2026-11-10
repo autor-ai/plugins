@@ -1,0 +1,21 @@
+{
+  "name": "autor",
+  "version": "0.1.0",
+  "description": "Make on-brand images, videos, PDFs and emails from your brand kit and HTML templates with autor.",
+  "author": {
+    "name": "autor",
+    "url": "https://autor.ai"
+  },
+  "homepage": "https://autor.ai",
+  "repository": "https://github.com/autor-ai/plugins",
+  "license": "MIT",
+  "keywords": [
+    "design",
+    "brand",
+    "templates",
+    "social media",
+    "email",
+    "video",
+    "marketing"
+  ]
+}

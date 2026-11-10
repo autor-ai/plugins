@@ -1,0 +1,16 @@
+interface:
+  display_name: "Explore on a sketch"
+  short_description: "Explore directions together on a sketch"
+  brand_color: "#171717"
+  default_prompt: "Explore three directions for our launch post on a sketch."
+
+policy:
+  allow_implicit_invocation: true
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "autor"
+      description: "autor MCP server"
+      transport: "streamable_http"
+      url: "https://autor.ai/mcp"

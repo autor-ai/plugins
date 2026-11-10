@@ -1,0 +1,49 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "autor",
+  "version": "0.1.0",
+  "description": "Make on-brand images, videos, PDFs and emails from your brand kit and HTML templates with autor.",
+  "author": {
+    "name": "autor",
+    "url": "https://autor.ai"
+  },
+  "homepage": "https://autor.ai",
+  "repository": "https://github.com/autor-ai/plugins",
+  "license": "MIT",
+  "keywords": [
+    "design",
+    "brand",
+    "templates",
+    "social media",
+    "email",
+    "video",
+    "marketing"
+  ],
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/setting-up-a-brand/SKILL.md",
+      "interface": {
+        "displayName": "autor",
+        "shortDescription": "On-brand design from templates",
+        "longDescription": "autor turns a project's brand kit and HTML templates into on-brand images, videos, PDFs and emails. Import a brand from its website, explore directions with you on a shared sketch, build templates with editable fields, and render finished files for review in autor.",
+        "developerName": "autor",
+        "category": "Design",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "websiteURL": "https://autor.ai",
+        "privacyPolicyURL": "https://autor.ai/privacy-policy",
+        "termsOfServiceURL": "https://autor.ai/terms-conditions",
+        "defaultPrompt": [
+          "Set up our brand in autor from our website.",
+          "Explore three directions for our launch announcement post.",
+          "Make a story ad template from our brand kit."
+        ],
+        "brandColor": "#171717",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/icon.png"
+      }
+    }
+  }
+}

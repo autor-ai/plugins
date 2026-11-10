@@ -1,0 +1,20 @@
+{
+  "name": "autor",
+  "interface": {
+    "displayName": "autor"
+  },
+  "plugins": [
+    {
+      "name": "autor",
+      "source": {
+        "source": "local",
+        "path": "./plugins/openai/autor"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Design"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+interface:
+  display_name: "Design a template"
+  short_description: "Build, preview and publish autor templates"
+  brand_color: "#171717"
+  default_prompt: "Make a 1080×1080 announcement template from our brand kit."
+
+policy:
+  allow_implicit_invocation: true
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "autor"
+      description: "autor MCP server"
+      transport: "streamable_http"
+      url: "https://autor.ai/mcp"
