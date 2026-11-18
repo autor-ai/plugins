@@ -78,6 +78,8 @@ The container's first child becomes `itemTemplate`, its tagged parts become `ite
 
 `data-autor-index="2"` in item markup shows a two-digit position (`01`, `02`). For email, use table containers.
 
+A `data-autor-frame` inside the item repeats once per item, in place between the fixed frames. Frame `session` renders as `session-1` … `session-N`, and render, preview `frameIds`, packs and review use those ids. So a cover, one poster per item and a closing frame are a single template. `get({type:"template", id})` marks such a frame `repeatsWith` the array field's id.
+
 ## Frames
 
 Each size is an element marked `data-autor-frame="<id>"`, with an optional `data-autor-frame-name`. `frames:[{id, name, width, height}]` replaces the whole ordered list; frames you leave out are removed. Marked frames are kept as they are on import.

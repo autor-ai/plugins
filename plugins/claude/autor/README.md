@@ -31,17 +31,32 @@ Connectors tab.
 
 ```
 codex plugin marketplace add autor-ai/plugins
+codex plugin add autor@autor
 ```
+
+**Cursor and Antigravity**: add the marketplace `autor-ai/plugins` and install
+**autor** (the package is in `plugins/agent-plugins/autor`).
+
+**Any other agent**: add autor's MCP server, `https://autor.ai/mcp`, and the
+skills with `npx skills add https://autor.ai`. autor's MCP server also serves
+the skills itself, so a connected agent can read them with `get_guide`.
 
 ## Skills
 
+Start with `autor`: it explains how autor works and which skill fits the job.
+
 | Skill | What it does |
 | --- | --- |
+| `autor` | How projects, brand kits, sketches, templates and renders fit together |
 | `setting-up-a-brand` | Imports a brand kit from a website and fixes logos, colors, fonts and voice |
-| `designing-templates` | Builds, previews, reviews and publishes templates |
 | `exploring-on-sketches` | Explores directions with you on a shared canvas |
+| `designing-templates` | Builds, previews, reviews and publishes templates, with a design craft guide |
+| `designing-video-templates` | Builds video templates with motion, audio and footage that renders |
+| `adapting-to-formats` | Adds story, feed, banner and email sizes to one design |
+| `checking-brand-compliance` | Reviews designs and files against the brand kit |
 | `producing-content` | Fills templates, renders files and shows the results |
-| `automating-workflows` | Turns app events and data into delivered files (Claude and Codex) |
+| `making-batches-from-data` | Turns a list or spreadsheet into many finished files |
+| `automating-workflows` | Turns app events and data into delivered files (not in ChatGPT) |
 
 ## Support
 

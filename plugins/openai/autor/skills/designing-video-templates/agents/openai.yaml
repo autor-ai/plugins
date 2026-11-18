@@ -1,0 +1,16 @@
+interface:
+  display_name: "Design video templates"
+  short_description: "Build video templates and motion"
+  brand_color: "#171717"
+  default_prompt: "Turn our launch post into a 10-second story video."
+
+policy:
+  allow_implicit_invocation: true
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "autor"
+      description: "autor MCP server"
+      transport: "streamable_http"
+      url: "https://autor.ai/mcp"

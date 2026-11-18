@@ -1,6 +1,6 @@
 ---
 name: automating-workflows
-description: Sets up autor workflows that turn events or data (a schedule, a webhook, a new row or page in a connected app, a website change) into rendered files delivered to social channels or other apps. Use when someone wants to automate content in autor, connect an app such as Google Sheets, Notion, Airtable, Slack or Instagram, or change, preview, pause or activate an autor workflow.
+description: Sets up autor workflows that turn events or data (a schedule, a webhook, a new row or page in a connected app, a website change) into rendered files delivered to social channels or other apps. Use when someone wants to automate content in autor, connect an app such as Google Sheets, Notion, Airtable, Slack or Instagram, or change, preview, pause or activate an autor workflow. Load it before the first find_capability, connect_account or save_workflow call.
 license: MIT
 compatibility: Requires the autor MCP server at https://autor.ai/mcp with its workflow tools.
 ---
@@ -28,6 +28,9 @@ Ask only what you can't infer. The template must be published. If it isn't, desi
 
 - `find_capability({kind:"toolkits", search:"sheets"})`, then `find_capability({kind:"tools", toolkit, search})`, then read one exact schema with `find_capability({slug, version})`.
 - Toolkit `social` is social publishing. Toolkit `autor` covers schedules, webhooks and website monitoring, none of which needs an account.
+- No app covers the API? Write a custom connector: [references/custom-connectors.md](references/custom-connectors.md).
+- Want an app's content on sketches? Write a sketch panel: [references/sketch-panels.md](references/sketch-panels.md).
+- Without those files, read them with `get_guide({topic:"automating-workflows", file:"references/custom-connectors.md"})`.
 
 ## 3. Connect accounts
 
@@ -40,6 +43,8 @@ Ask only what you can't infer. The template must be published. If it isn't, desi
 ## 4. Try before saving
 
 `try_capability({connectionId, toolSlug, toolkitVersion, arguments})` runs reads for real and simulates writes. Use it to see real record shapes before you write the mapping.
+
+To let a workflow decide which items continue, ask the Jev decision model typed questions (yes/no, choice, score) about text and images: `try_capability({toolSlug:"DECIDE", arguments:{state, images, questions, rules}})` needs no connection. Run it on a few real items to pick thresholds, then save them as a decision step; `find_capability({slug:"DECIDE"})` shows the shape. Each call is metered to the organization.
 
 ## 5. Write and save the spec
 

@@ -1,6 +1,6 @@
 ---
 name: setting-up-a-brand
-description: Sets up or repairs a brand kit in autor. Creates a project from a company's website domain, imports its logos, colors and fonts, then checks and corrects the kit with the person. Use when someone starts with autor or has just connected it, adds a brand, client or product line, or says autor has the wrong logo, colors, fonts or tone of voice.
+description: Sets up or repairs a brand kit in autor. Creates a project from a company's website domain, imports its logos, colors and fonts, then checks and corrects the kit with the person. Use when someone starts with autor or has just connected it, adds a brand, client or product line, or says autor has the wrong logo, colors, fonts or tone of voice. Load it before the first create_project, import_brand or update_brand_kit call.
 license: MIT
 compatibility: Requires the autor MCP server at https://autor.ai/mcp.
 ---
@@ -48,14 +48,14 @@ Give the person a short summary (logo, palette with hex values, fonts, voice in 
 - Always pass the kit's `revision` from your latest read as `expectedRevision`. On `revision_conflict`, read the kit again and reapply your change.
 - Turn on `enforcement` only when the person asks for brand enforcement: it makes every template need a saved design review before it can be published.
 
-`get_guide({topic:"brand"})` has the exact fields.
+Exact fields are in [references/brand-kit.md](references/brand-kit.md), or `get_guide({topic:"setting-up-a-brand", file:"references/brand-kit.md"})` when that file isn't next to this skill.
 
 ## 5. Hand off
 
-Summarize what is in the kit and what you changed. Then offer a next step: explore visual directions on a sketch, or build a first template.
+Summarize what is in the kit and what you changed. Then offer a next step: explore visual directions on a sketch (`exploring-on-sketches`), or build a first template (`designing-templates`).
 
 ## Ground rules
 
 - People stay in charge of their brand. Ask before replacing anything they set themselves.
 - Never ask for passwords or other credentials in chat.
-- When a tool fails and its recovery hint doesn't help, call `send_feedback({type:"bug", summary, tool, requestId})` with the IDs involved, not the person's content.
+- When a tool fails and its recovery hint doesn't help, call `send_feedback({type:"bug", summary, tool, resourceIds})` with the IDs involved, not the person's content.

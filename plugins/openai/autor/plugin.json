@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "autor",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Make on-brand images, videos, PDFs and emails from your brand kit and HTML templates with autor.",
   "author": {
     "name": "autor",
@@ -33,6 +33,7 @@
           "Write"
         ],
         "websiteURL": "https://autor.ai",
+        "supportURL": "https://autor.ai/support",
         "privacyPolicyURL": "https://autor.ai/privacy-policy",
         "termsOfServiceURL": "https://autor.ai/terms-conditions",
         "defaultPrompt": [
@@ -41,8 +42,64 @@
           "Make a story ad template from our brand kit."
         ],
         "brandColor": "#171717",
+        "brandColorDark": "#E5E5E5",
         "composerIcon": "./assets/icon.png",
         "logo": "./assets/icon.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Set up a brand from its website",
+              "prompt": "Create an autor project for autor.ai and import its brand from the website.",
+              "tools_triggered": "get_context, create_project, get",
+              "expected_behavior": "Creates a project with the domain autor.ai, waits for the background brand import to finish, and summarizes the imported logo, colors and fonts."
+            },
+            {
+              "description": "Design a template from the brand kit",
+              "prompt": "In autor, make a square announcement post template from our brand kit.",
+              "tools_triggered": "get_context, get, create_template, edit_template, preview",
+              "expected_behavior": "Reads the brand kit, creates a draft template, edits it, previews it as an image and describes its editable fields. The draft stays unpublished until the person asks to publish it."
+            },
+            {
+              "description": "Explore directions on a sketch",
+              "prompt": "Show me three directions for our summer sale story ad in autor.",
+              "tools_triggered": "get_context, get, edit_sketch, preview, show",
+              "expected_behavior": "Creates one sketch named by the question with three labelled directions, shows it in the conversation, shares the sketch link and asks the person to pick a direction."
+            },
+            {
+              "description": "Render posts from a published template",
+              "prompt": "Use our Announcement template in autor to make posts for these headlines: \"Spring collection is here\", \"Free shipping this week\", \"Meet our new studio\".",
+              "tools_triggered": "search, get, save_content, render, show",
+              "expected_behavior": "Finds the published Announcement template, saves three content items with the headlines, renders one image per item and shows the finished images."
+            },
+            {
+              "description": "Show recent work",
+              "prompt": "What did we render in autor this week?",
+              "tools_triggered": "search, show",
+              "expected_behavior": "Lists the files rendered in the last seven days with their template and date, and shows them in the gallery with download links."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Unrelated request: answered without autor",
+              "prompt": "Write me a short poem about autumn."
+            },
+            {
+              "description": "Plan changes: no tool call, and no purchase or upgrade flow",
+              "prompt": "Upgrade my autor plan to the next tier."
+            },
+            {
+              "description": "Publishing from chat: autor sends nothing to social accounts from ChatGPT",
+              "prompt": "Post this image to our Instagram account right now."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "autor doesn't sell products or process payments in ChatGPT."
+      },
+      "publication": {
+        "release_notes": "New `autor` skill to start with: how projects, brand kits, sketches, templates and renders fit together, and which skill fits each job.\nNew skills: `checking-brand-compliance`, `adapting-to-formats`, `making-batches-from-data` and `designing-video-templates`.\nTemplates and sketches follow a design craft guide: hierarchy, type scale, spacing, contrast, platform safe zones and a check before showing work.\nEach skill names the tool it must be loaded before, so agents load the right one.\nThe same skills are served by autor's MCP server, so agents connected without the plugin get them too, through `get_guide` or MCP skill resources. The older guide topics now open the matching skill file.\nThe plugin tells autor it is installed, so autor can see plugin use.\nSketches: build each round in view, a few items per call, with a placeholder before slow work, so people watch the canvas fill in. Hosts that confirm every tool call still send a round in one call.\nSketches: images keep their own shape on the canvas, and `upload_asset` and `get({type:\"sketch\"})` report each image's real width and height.\nSketches: item labels show only when someone selects the item.\nSketches: agents add notes and explanations to the canvas only when the person asks; their reasoning goes in their reply.\nSketches: people can scroll and click render and html items, and play videos, in place, so clickable prototypes work on the canvas."
       }
     }
   }

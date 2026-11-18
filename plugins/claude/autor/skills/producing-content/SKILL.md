@@ -1,6 +1,6 @@
 ---
 name: producing-content
-description: Produces finished files with autor. Fills published templates with copy and images, renders images, videos, PDFs and emails, runs recipes that make content packs, and shows the results for review. Use when someone wants actual posts, ads, banners, emails or videos made from their autor templates, a batch of versions from a list or spreadsheet, downloads of rendered files, or to review, approve or flag rendered files.
+description: Produces finished files with autor. Fills published templates with copy and images, renders images, videos, PDFs and emails, runs recipes that make content packs, and shows the results for review. Use when someone wants actual posts, ads, banners, emails or videos made from their autor templates, a batch of versions from a list or spreadsheet, downloads of rendered files, or to review, approve or flag rendered files. Load it before the first save_content, render or run call.
 license: MIT
 compatibility: Requires the autor MCP server at https://autor.ai/mcp.
 ---
@@ -22,7 +22,7 @@ The tools named here are autor's MCP tools; your host may show them with a prefi
 - Write copy in the brand's voice, read from `get({type:"brand_kit", id: projectId})`. Fit the space the design gives: a five-word headline slot is not for twenty words.
 - Image values are `/assets/<id>` embed URLs. Upload new images first with `upload_asset`, sending every file in one `files` list. Add `#autor-position=x,y` (0 to 100) to set the crop.
 - Choice fields take one of their options. Markup fields accept `*italic*` and `**bold**`.
-- Building from the person's data (a pasted list or a spreadsheet)? Show how you'll map columns to fields and confirm it before saving many items.
+- Building from the person's data (a pasted list or a spreadsheet)? Follow `making-batches-from-data`: map columns to fields and confirm it before saving many items.
 - The result is per item. Fix the failed items and don't resend the ones that succeeded.
 
 ## 3. Render and check
@@ -48,7 +48,7 @@ The tools named here are autor's MCP tools; your host may show them with a prefi
 
 - `review_creation({kind:"pack", id})` reads each file's decision and open flags, plus a `snapshotHash`.
 - Approve, reject or comment only when the person asks:
-  - `review_creation({kind, id, decision:"approved", snapshotHash})` approves every finished file. For a workflow run this also sends its review deliveries; `deliveries` says what was sent and why anything is still held.
+  - `review_creation({kind, id, decision:"approved", snapshotHash})` approves every finished file. For an automated run this also sends its review deliveries; `deliveries` says what was sent and why anything is still held.
   - `decision:"rejected"` with a `reason` flags them all.
   - `comment` flags one file.
 - `itemIds` returns those files' current values; `edit: {itemId, outputId, values}` changes one file and renders it again.
@@ -56,4 +56,4 @@ The tools named here are autor's MCP tools; your host may show them with a prefi
 - Approving never publishes or sends anything.
 - Delete content or outputs only when asked.
 
-`get_guide({topic:"inspection"})` and `get_guide({topic:"operations"})` have the exact arguments. When a tool fails and its recovery hint doesn't help, call `send_feedback` with the tool and `requestId`.
+Previews, downloads, background work and retries are in `get_guide({topic:"autor", file:"references/previews.md"})` and `get_guide({topic:"autor", file:"references/operations.md"})`. When a tool fails and its recovery hint doesn't help, call `send_feedback` with the tool and the IDs involved, not the person's content.

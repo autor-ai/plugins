@@ -1,0 +1,16 @@
+interface:
+  display_name: "Make batches from data"
+  short_description: "Turn a list or spreadsheet into many posts"
+  brand_color: "#171717"
+  default_prompt: "Make a post for each product in this list."
+
+policy:
+  allow_implicit_invocation: true
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "autor"
+      description: "autor MCP server"
+      transport: "streamable_http"
+      url: "https://autor.ai/mcp"

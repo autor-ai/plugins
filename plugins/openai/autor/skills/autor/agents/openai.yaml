@@ -1,0 +1,16 @@
+interface:
+  display_name: "autor"
+  short_description: "How autor works and which skill to use"
+  brand_color: "#171717"
+  default_prompt: "What can autor make for our brand?"
+
+policy:
+  allow_implicit_invocation: true
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "autor"
+      description: "autor MCP server"
+      transport: "streamable_http"
+      url: "https://autor.ai/mcp"

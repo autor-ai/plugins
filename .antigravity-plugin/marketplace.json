@@ -1,0 +1,19 @@
+{
+  "name": "autor",
+  "owner": {
+    "name": "autor",
+    "url": "https://autor.ai"
+  },
+  "metadata": {
+    "description": "autor's plugins for Claude, ChatGPT and Codex.",
+    "version": "0.2.0"
+  },
+  "plugins": [
+    {
+      "name": "autor",
+      "source": "./plugins/agent-plugins/autor",
+      "description": "Make on-brand images, videos, PDFs and emails from your brand kit and HTML templates with autor.",
+      "version": "0.2.0"
+    }
+  ]
+}

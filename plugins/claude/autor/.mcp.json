@@ -2,7 +2,10 @@
   "mcpServers": {
     "autor": {
       "type": "http",
-      "url": "https://autor.ai/mcp"
+      "url": "https://autor.ai/mcp",
+      "headers": {
+        "X-Autor-Plugin": "claude"
+      }
     }
   }
 }

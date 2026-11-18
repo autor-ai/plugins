@@ -1,6 +1,6 @@
 ---
 name: exploring-on-sketches
-description: Explores visual directions with a person on an autor sketch, a shared canvas of renders, images, notes, palettes and type specimens that they pick from and comment on round by round, before anything becomes a template. Use when someone wants options, variations, directions, a moodboard, a contact sheet, a photo shortlist or a side-by-side comparison in autor, or asks to continue a sketch.
+description: Explores visual directions with a person on an autor sketch, a shared canvas of renders, images, notes, palettes and type specimens that they pick from and comment on round by round, before anything becomes a template. Use when someone wants options, variations, directions, a moodboard, a contact sheet, a photo shortlist or a side-by-side comparison in autor, or asks to continue a sketch. Load it before the first edit_sketch call.
 license: MIT
 compatibility: Requires the autor MCP server at https://autor.ai/mcp.
 ---
@@ -22,7 +22,7 @@ The tools named here are autor's MCP tools; your host may show them with a prefi
 ## Make a round
 
 - Build the round in view, 1–4 items per `edit_sketch` call, each with a short label, passing `expectedRevision` from the last reply. People watch the canvas fill in as your cursor goes to each change. If your host asks the person to confirm every tool call, send the round in one call instead.
-- Make the options genuinely different in layout, hierarchy, imagery or type, not one design in three colors.
+- Make the options genuinely different in layout, hierarchy, imagery or type, not one design in three colors. Hold each one to the craft guide (`get_guide({topic:"designing-templates", file:"references/craft.md"})`): a weak option wastes a round.
 - Let the work speak: add no notes, headings or explanations to the canvas unless the person asks for them. Name directions with labels and groups, and give your reasoning in your reply. Labels show only when someone selects an item.
 - Item kinds:
   - `render`: a design at its real size (`html`, `width`, `height`, such as 1080×1920).
@@ -54,4 +54,4 @@ Answer comments with `reply:[{id, body}]` and close what you addressed with `res
 - When they have chosen, `create_template({from:{sketchId, itemId}})` copies an `html` or `render` item into a draft template. Continue from there to fields, preview and publishing.
 - Only people archive or delete a sketch. An archived sketch takes no more edits.
 
-`get_guide({topic:"sketches"})` lists every item field. When a tool fails and its recovery hint doesn't help, call `send_feedback` with the tool and `requestId`.
+Every item field, edit and activity option is in [references/items.md](references/items.md), or `get_guide({topic:"exploring-on-sketches", file:"references/items.md"})` when that file isn't next to this skill. When a tool fails and its recovery hint doesn't help, call `send_feedback` with the tool and the IDs involved, not the person's content.

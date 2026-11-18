@@ -1,6 +1,6 @@
 ---
 name: designing-templates
-description: Builds and edits autor templates, the reusable HTML designs for images, videos, PDFs and emails with editable fields and sizes. Previews them, reviews them against the brand kit and publishes them. Use when someone asks to design, build, import, change or fix a template, social post, ad, banner, flyer, newsletter or email layout in autor, or to address comments pinned on a draft template.
+description: Builds and edits autor templates, the reusable HTML designs for images, videos, PDFs and emails with editable fields and sizes. Previews them, reviews them against the brand kit and publishes them. Use when someone asks to design, build, import, change or fix a template, social post, ad, banner, flyer, newsletter or email layout in autor, or to address comments pinned on a draft template. Load it before the first create_template or edit_template call.
 license: MIT
 compatibility: Requires the autor MCP server at https://autor.ai/mcp.
 ---
@@ -39,8 +39,9 @@ Send the `revision` from each response as `expectedRevision` on the next write. 
 - **Fields**: `addFields:[{label:"Headline", type:"text", selector:"h1"}]`. A field binds every element its selector matches, in every frame, and takes the first match's current content as its default.
 - **Frames**: mark each size's element with `data-autor-frame="<id>"`, or set the list with `frames`.
 - **Real copy**: design for the longest realistic text and the widest image crops, not the placeholder. Use CSS that adapts (line clamping, fitted type) so a long headline never overflows.
+- **Craft**: read [references/craft.md](references/craft.md) before your first design: hierarchy, type scale, spacing, contrast, platform safe zones, the looks to avoid, and a checklist to run before you show anything.
 
-Field types, choices, rich text, image crops, lists and frames are in [references/fields.md](references/fields.md).
+Field types, choices, rich text, image crops, lists and frames are in [references/fields.md](references/fields.md). Exact create, import and edit arguments are in [references/authoring.md](references/authoring.md).
 
 ## Review and publish
 
@@ -58,4 +59,4 @@ People pin comments to draft templates. `get({type:"template", id})` returns the
 
 Show the final preview (call `show` when your host offers it), then list the editable fields, the frames, and anything you weren't sure about.
 
-`get_guide({topic:"authoring"})` has the exact arguments. When a tool fails and its recovery hint doesn't help, call `send_feedback` with the tool and `requestId`.
+If the files under `references/` aren't next to this skill, read them with `get_guide({topic:"designing-templates", file:"references/fields.md"})`. Video templates have their own skill, `designing-video-templates`; more sizes of one design are in `adapting-to-formats`. When a tool fails and its recovery hint doesn't help, call `send_feedback` with the tool and the IDs involved, not the person's content.
